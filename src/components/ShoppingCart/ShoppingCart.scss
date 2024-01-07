@@ -1,0 +1,19 @@
+// src/components/ShoppingCart/ShoppingCart.scss
+
+.cart-item {
+	border: 1px solid #ddd;
+	padding: 1rem;
+	margin-bottom: 1rem;
+}
+
+.light-mode .cart-item {
+	background-color: var(--background-light);
+	color: var(--text-light);
+}
+
+.dark-mode .cart-item {
+	background-color: var(--background-dark);
+	color: var(--text-dark);
+}
+
+/* Agrega estilos adicionales según sea necesario */

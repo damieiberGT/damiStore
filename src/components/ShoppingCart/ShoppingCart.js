@@ -1,8 +1,10 @@
+// src/components/ShoppingCart/ShoppingCart.js
 import React from 'react';
 import { useCart } from '../../contexts/CartContext';
+import './ShoppingCart.scss';
 
 const ShoppingCart = () => {
-	const { cartItems, updateQuantity, calculateTotal, handleCheckout, clearCart } = useCart();
+	const { cartItems, updateQuantity, calculateTotal, handleCheckout, clearCart, darkMode } = useCart();
 
 	const handleQuantityChange = (productId, newQuantity) => {
 		updateQuantity(productId, newQuantity);
@@ -13,7 +15,7 @@ const ShoppingCart = () => {
 	};
 
 	return (
-		<div>
+		<div className={`shopping-cart ${darkMode ? 'dark-mode' : ''}`}>
 			<h2>Carrito de Compras</h2>
 			{cartItems.map((item) => (
 				<div key={item.id} className="cart-item">

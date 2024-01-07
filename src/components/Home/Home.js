@@ -1,10 +1,11 @@
-// src/components/Home.js
+// src/components/Home/Home.js
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Home.scss';
 
 const Home = () => {
 	return (
-		<div>
+		<div className="home">
 			<h2>Bienvenido a la Tienda</h2>
 			<div>
 				<Link to="/productos">

@@ -1,9 +1,11 @@
+// src/contexts/CartContext.js
 import React, { createContext, useState, useContext } from 'react';
 
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
 	const [cartItems, setCartItems] = useState([]);
+	const [darkMode, setDarkMode] = useState(false);
 
 	const addToCart = (product) => {
 		setCartItems((prevCart) => [...prevCart, { ...product, quantity: 1 }]);
@@ -30,7 +32,7 @@ export const CartProvider = ({ children }) => {
 
 	return (
 		<CartContext.Provider
-			value={{ cartItems, addToCart, updateQuantity, calculateTotal, clearCart }}
+			value={{ cartItems, addToCart, updateQuantity, calculateTotal, clearCart, darkMode, setDarkMode }}
 		>
 			{children}
 		</CartContext.Provider>

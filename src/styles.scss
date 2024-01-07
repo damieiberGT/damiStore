@@ -2,15 +2,22 @@
 
 $primary-color: #007bff;
 
-body {
-	font-family: "Arial", sans-serif;
+:root {
+	--background-light: #fff;
+	--background-dark: #001529;
+	--text-light: #000;
+	--text-dark: #fff;
 }
 
-// .header {
-// 	background-color: $primary-color;
-// 	color: white;
-// 	padding: 1rem;
-// }
+body {
+	background-color: var(--background-light);
+	color: var(--text-light);
+}
+
+.dark-mode body {
+	background-color: var(--background-dark);
+	color: var(--text-dark);
+}
 
 .footer {
 	background-color: $primary-color;

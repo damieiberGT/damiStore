@@ -1,0 +1,19 @@
+// src/components/Home/Home.scss
+
+.home-container {
+	border: 1px solid #ddd;
+	padding: 1rem;
+	margin: 1rem;
+}
+
+.light-mode .home-container {
+	background-color: var(--background-light);
+	color: var(--text-light);
+}
+
+.dark-mode .home-container {
+	background-color: var(--background-dark);
+	color: var(--text-dark);
+}
+
+/* Agrega estilos adicionales según sea necesario */
