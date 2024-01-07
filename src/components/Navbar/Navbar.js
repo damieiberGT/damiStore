@@ -8,8 +8,8 @@ import { useCart } from '../../contexts/CartContext';
 
 const { Header } = Layout;
 
-const Navbar = ({ cartItemCount }) => {
-	const { darkMode, setDarkMode } = useCart();
+const Navbar = () => {
+	const { darkMode, setDarkMode, cartTotal } = useCart();
 
 	const handleDarkModeChange = (checked) => {
 		setDarkMode(checked);
@@ -35,7 +35,7 @@ const Navbar = ({ cartItemCount }) => {
 					<div className="cart-icon">
 						<Link to="/carrito">
 							<ShoppingCartOutlined style={{ fontSize: '24px', marginLeft: '8px' }} />
-							{cartItemCount > 0 && <span className="cart-badge">{cartItemCount}</span>}
+							{cartTotal > 0 && <span className="cart-badge">{cartTotal}</span>}
 						</Link>
 					</div>
 				</div>

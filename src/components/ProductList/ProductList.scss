@@ -16,4 +16,8 @@
 	color: var(--text-dark);
 }
 
-/* Agrega estilos adicionales según sea necesario */
+.productList {
+	display: flex;
+	justify-content: center;
+	background-color: green;
+}
