@@ -30,7 +30,7 @@ const ProductWidget = ({ product }) => {
 				</Typography.Title>
 				<Col>
 					<Typography.Paragraph>
-						Price: ${product.price.toLocaleString()}
+						Precio: ${product.price.toLocaleString()}
 					</Typography.Paragraph>
 				</Col>
 				<Col>

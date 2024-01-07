@@ -11,8 +11,10 @@ const ProductList = () => {
 
 	return (
 		<Row className={`productList ${darkMode ? 'dark-mode' : ''}`}>
-			<Col span={24}>
-				<Typography.Title level={2}>Lista de Productos</Typography.Title>
+			<Col span={24} className='productListTitleContainer'>
+				<Typography.Title level={2} className='productListTitle'>
+					Lista de Productos
+				</Typography.Title>
 			</Col>
 			{products.map((product) => (
 				<ProductWidget key={product.id} product={product} addToCart={addToCart} />

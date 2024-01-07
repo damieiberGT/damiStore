@@ -1,4 +1,4 @@
-// src/components/ProductList/ProductList.scss
+$primary-color: #007bff;
 
 .product {
 	border: 1px solid #ddd;
@@ -19,5 +19,15 @@
 .productList {
 	display: flex;
 	justify-content: center;
-	background-color: green;
+}
+
+.productListTitleContainer {
+	display: flex;
+	justify-content: center;
+	border: solid 4px $primary-color;
+	padding: 0;
+}
+
+.productListTitle {
+	margin: 0;
 }
