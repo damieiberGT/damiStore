@@ -5,7 +5,7 @@ import { useCart } from '../../contexts/CartContext';
 import './ButtonBox.scss';
 
 const ButtonBox = ({ quantity, setQuantity, product }) => {
-	const { updateQuantity, productList } = useCart();
+	const { productList } = useCart();
 	const [isMaxQuantity, setIsMaxQuantity] = useState(false);
 
 	const handleQuantityChange = (value) => {
@@ -14,7 +14,6 @@ const ButtonBox = ({ quantity, setQuantity, product }) => {
 	};
 
 	const handleDeleteFromCart = () => {
-		updateQuantity(product.id, 0);
 		setQuantity(0);
 	};
 
