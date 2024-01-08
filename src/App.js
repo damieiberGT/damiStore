@@ -2,9 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Layout } from 'antd';
 import Navbar from './components/Navbar/Navbar';
-import Home from './components/Home/Home';
-import ProductList from './components/ProductList/ProductList';
-import ShoppingCart from './components/ShoppingCart/ShoppingCart';
+import Home from './pages/Home/Home';
+import ProductList from './pages/ProductList/ProductList';
+import ShoppingCart from './pages/ShoppingCart/ShoppingCart';
 import Footer from './components/Footer/Footer';
 import { CartProvider } from './contexts/CartContext';
 

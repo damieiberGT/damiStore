@@ -1,6 +1,7 @@
 // src/components/ShoppingCart/ShoppingCart.js
 import React from 'react';
 import { useCart } from '../../contexts/CartContext';
+import ButtonBox from '../../components/buttonBox/ButtonBox';
 import './ShoppingCart.scss';
 
 const ShoppingCart = () => {
@@ -19,12 +20,8 @@ const ShoppingCart = () => {
 			<h2>Carrito de Compras</h2>
 			{cartItems.map((item) => (
 				<div key={item.id} className="cart-item">
-					<p>{item.name} - ${item.price} - Cantidad: {item.quantity}</p>
-					<input
-						type="number"
-						value={item.quantity}
-						onChange={(e) => handleQuantityChange(item.id, parseInt(e.target.value, 10))}
-					/>
+					<p>{item.name} - ${item.price}</p>
+					<ButtonBox quantity={item.quantity} setQuantity={(newQuantity) => handleQuantityChange(item.id, newQuantity)} product={item} />
 				</div>
 			))}
 			<p>Total: ${calculateTotal()}</p>

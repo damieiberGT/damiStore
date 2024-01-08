@@ -4,7 +4,7 @@ import { Button, Row, Typography, Col } from 'antd';
 import { useCart } from '../../contexts/CartContext';
 import products from '../../Api/products.json';
 import './ProductList.scss';
-import ProductWidget from '../ProductWidget/ProductWidget';
+import ProductWidget from '../../components/ProductWidget/ProductWidget';
 
 const ProductList = () => {
 	const { addToCart, darkMode } = useCart();

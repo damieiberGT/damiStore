@@ -1,4 +1,3 @@
-// src/contexts/CartContext.js
 import React, { createContext, useState, useEffect, useContext } from 'react';
 
 const CartContext = createContext();
@@ -7,6 +6,8 @@ export const CartProvider = ({ children }) => {
 	const [cartItems, setCartItems] = useState([]);
 	const [darkMode, setDarkMode] = useState(false);
 	const [cartTotal, setCartTotal] = useState(0);
+	const [quantity, setQuantity] = useState(0);
+
 
 	useEffect(() => {
 		const storedCart = JSON.parse(localStorage.getItem('cartItems'));
@@ -17,34 +18,37 @@ export const CartProvider = ({ children }) => {
 	}, []);
 
 	const addToCart = (product) => {
-		const existingItem = cartItems.find(item => item.id === product.id);
+		const existingItem = cartItems.find((item) => item.id === product.id);
 
 		if (existingItem) {
-			setCartItems(prevCart => prevCart.map(item => (
-				item.id === existingItem.id ? { ...item, quantity: item.quantity + product.quantity } : item
-			)));
+			setCartItems((prevCart) =>
+				prevCart.map((item) =>
+					item.id === existingItem.id ? { ...item, quantity: item.quantity + product.quantity } : item
+				)
+			);
 		} else {
-			setCartItems(prevCart => [...prevCart, { ...product, quantity: product.quantity }]);
+			setCartItems((prevCart) => [...prevCart, { ...product, quantity: product.quantity }]);
 		}
-		localStorage.setItem('cartItems', JSON.stringify(cartItems));
-		console.log('addCart', cartItems);
-	};
 
+		setCartItems((prevCart) => {
+			localStorage.setItem('cartItems', JSON.stringify(prevCart));
+			return prevCart;
+		});
+	};
 	const updateQuantity = (productId, quantity) => {
-		setCartItems(prevCart =>
-			prevCart.map((item) =>
-				item.id === productId ? { ...item, quantity } : item
-			)
+		setCartItems((prevCart) =>
+			prevCart.map((item) => (item.id === productId ? { ...item, quantity } : item))
 		);
-		localStorage.setItem('cartItems', JSON.stringify(cartItems));
-		console.log('updateCart', cartItems);
+
+		setCartItems((prevCart) => {
+			localStorage.setItem('cartItems', JSON.stringify(prevCart));
+			return prevCart;
+		});
 	};
 
 	const calculateTotal = () => {
-		return cartItems.reduce(
-			(total, item) => total + item.quantity,
-			0
-		);
+		const totalCalculated = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+		return totalCalculated.toLocaleString()
 	};
 
 	const clearCart = () => {
@@ -59,7 +63,7 @@ export const CartProvider = ({ children }) => {
 
 	return (
 		<CartContext.Provider
-			value={{ cartItems, addToCart, updateQuantity, calculateTotal, clearCart, darkMode, setDarkMode, cartTotal }}
+			value={{ cartItems, addToCart, updateQuantity, calculateTotal, clearCart, darkMode, setDarkMode, cartTotal, quantity, setQuantity }}
 		>
 			{children}
 		</CartContext.Provider>
