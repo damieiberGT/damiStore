@@ -1,0 +1,19 @@
+// BasicButton.scss
+
+.basicButton {
+	// Estilos predeterminados del botón
+}
+
+.dark-mode {
+	.basicButton {
+		// Modo oscuro: ajusta los estilos según sea necesario
+		background-color: #1677ff9c; // Cambia el color de fondo para el modo oscuro
+		color: #fff; // Cambia el color del texto para el modo oscuro
+		border: 1px solid #fff; // Cambia el color del borde para el modo oscuro, si es necesario
+	}
+}
+
+.dark-mode .disabled {
+	background-color: #001529; // Cambia el color de fondo para el modo oscuro
+	color: #ffffff3f;
+}

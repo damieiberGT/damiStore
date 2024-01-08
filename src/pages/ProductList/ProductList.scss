@@ -1,14 +1,15 @@
-$primary-color: #007bff;
+@import "../../styles/variables";
 
 .product {
 	border: 1px solid #ddd;
 	padding: 1rem;
 	margin-bottom: 1rem;
+	background-color: $primary-color;
 }
 
 .dark-mode {
 	.productListTitle {
-		background-color: var(--background-dark);
+		background-color: $primary-color;
 		color: white;
 	}
 }

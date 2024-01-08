@@ -4,3 +4,23 @@
 	margin: 0;
 	padding: 0;
 }
+
+.inputNumber {
+	color: black;
+}
+
+.dark-mode {
+	.buttonBoxCol {
+		color: #fff; // Camb
+	}
+	.inputNumber .ant-input-number-input {
+		color: #fff;
+	}
+	.addButton {
+		background-color: #ffffff3f;
+	}
+
+	.restButton {
+		background-color: #ffffff3f;
+	}
+}

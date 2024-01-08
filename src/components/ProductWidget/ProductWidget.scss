@@ -1,3 +1,5 @@
+// ProductWidget.scss
+
 .cardContainer {
 	margin: 4px;
 	border: solid lightgray 1px;
@@ -9,6 +11,10 @@
 	padding: 8px;
 	max-width: min-content;
 	flex-direction: column;
+
+	&.dark-mode {
+		background-color: #001529; // Dark mode background color
+	}
 }
 
 .cardTitle {
@@ -21,13 +27,21 @@
 	display: flex;
 	justify-content: center;
 }
+.dark-mode {
+	.addToCardButton {
+		color: #fff; // Dark mode text color
+	}
 
-.cardButtons {
-	display: flex;
-	justify-content: center;
-}
+	.cardTitle {
+		color: #fff; // Dark mode text color
+	}
 
-.cardPrice {
-	display: flex;
-	justify-content: center;
+	.card .ant-card-body {
+		background-color: #001529; // Dark mode background color
+		color: #fff; // Dark mode text color
+	}
+
+	.cardPrice {
+		color: #fff;
+	}
 }

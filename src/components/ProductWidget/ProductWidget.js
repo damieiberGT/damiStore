@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Card, Row, Typography, Col } from 'antd';
 import ButtonBox from '../buttonBox/ButtonBox';
 import BasicButton from '../basicButton/BasicButton';
@@ -6,7 +6,7 @@ import { useCart } from '../../contexts/CartContext';
 import './ProductWidget.scss';
 
 const ProductWidget = ({ product }) => {
-	const { addToCart, productList } = useCart();
+	const { addToCart, productList, darkMode } = useCart();
 	const [localQuantity, setLocalQuantity] = useState(0);
 
 	const storedProduct = productList.find((p) => p.id === product.id);
@@ -23,13 +23,13 @@ const ProductWidget = ({ product }) => {
 	};
 
 	return (
-		<div className='cardContainer'>
-			<Card className='card'>
+		<div className={`cardContainer ${darkMode ? 'dark-mode' : ''}`}>
+			<Card className={`card ${darkMode ? 'dark-mode' : ''}`}>
 				<Typography.Title level={3} className='cardTitle'>
 					{product.name}
 				</Typography.Title>
-				<Col className='cardPrice'>
-					<Typography.Paragraph>
+				<Col >
+					<Typography.Paragraph className='cardPrice'>
 						Precio: ${product?.price?.toLocaleString()}
 					</Typography.Paragraph>
 				</Col>

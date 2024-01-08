@@ -1,3 +1,5 @@
+// ButtonBox.js
+
 import React, { useEffect, useState } from 'react';
 import { Row, Button, InputNumber, Typography, Col, Popover } from 'antd';
 import { PlusOutlined, MinusOutlined, DeleteOutlined } from '@ant-design/icons';
@@ -5,7 +7,7 @@ import { useCart } from '../../contexts/CartContext';
 import './ButtonBox.scss';
 
 const ButtonBox = ({ quantity, setQuantity, product }) => {
-	const { productList } = useCart();
+	const { productList, darkMode } = useCart();
 	const [isMaxQuantity, setIsMaxQuantity] = useState(false);
 
 	const handleQuantityChange = (value) => {
@@ -37,6 +39,7 @@ const ButtonBox = ({ quantity, setQuantity, product }) => {
 						onClick={handleDeleteFromCart}
 						icon={<DeleteOutlined />}
 						disabled
+						className={`restButton ${darkMode ? 'dark-mode' : ''}`}
 					/>
 				);
 			case 1:
@@ -44,6 +47,7 @@ const ButtonBox = ({ quantity, setQuantity, product }) => {
 					<Button
 						onClick={handleDeleteFromCart}
 						icon={<DeleteOutlined />}
+						className={`restButton ${darkMode ? 'dark-mode' : ''}`}
 					/>
 				);
 			default:
@@ -51,14 +55,15 @@ const ButtonBox = ({ quantity, setQuantity, product }) => {
 					<Button
 						onClick={() => handleQuantityChange(quantity - 1)}
 						icon={<MinusOutlined />}
+						className={`restButton ${darkMode ? 'dark-mode' : ''}`}
 					/>
 				);
 		}
 	};
 
 	return (
-		<Row className="buttonBoxRow">
-			<Col span={24} className="buttonBoxCol">
+		<Row className={`buttonBoxRow ${darkMode ? 'dark-mode' : ''}`}>
+			<Col span={24} className={`buttonBoxCol ${darkMode ? 'dark-mode' : ''}`}>
 				{renderButton()}
 				<InputNumber
 					min={0}
@@ -66,16 +71,15 @@ const ButtonBox = ({ quantity, setQuantity, product }) => {
 					onChange={handleQuantityChange}
 					controls={false}
 					style={{ margin: '0 8px', maxWidth: '25%' }}
+					className={`inputNumber ${darkMode ? 'dark-mode' : ''}`}
 				/>
-				<Popover
-					content={isMaxQuantity ? content : null}
-					trigger="hover"
-				>
+				<Popover content={isMaxQuantity ? content : null} trigger="hover">
 					<Button
 						onClick={() => handleQuantityChange(quantity + 1)}
 						icon={<PlusOutlined />}
 						disabled={isMaxQuantity}
 						style={{ backgroundColor: isMaxQuantity ? '#ff4d4f' : '' }}
+						className={`addButton ${darkMode ? 'dark-mode' : ''}`}
 					/>
 				</Popover>
 			</Col>
