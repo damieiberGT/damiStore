@@ -1,28 +1,18 @@
 import React, { useState } from 'react';
 import { Card, InputNumber, Button, Row, Typography, Col } from 'antd';
-import { PlusOutlined, MinusOutlined, DeleteOutlined } from '@ant-design/icons';
-import { useCart } from '../../contexts/CartContext';
-import './ProductWidget.scss'
+import { PlusOutlined, DeleteOutlined } from '@ant-design/icons';
 import ButtonBox from '../buttonBox/ButtonBox';
+import { useCart } from '../../contexts/CartContext';
+import './ProductWidget.scss';
 
 const ProductWidget = ({ product }) => {
-	// const { addToCart, updateQuantity } = useCart();
-	const { addToCart, quantity, setQuantity } = useCart();
-	// const [quantity, setQuantity] = useState(0);
-
-	// const handleQuantityChange = (value) => {
-	// 	setQuantity(value);
-	// };
+	const { addToCart } = useCart();
+	const [localQuantity, setLocalQuantity] = useState(0);
 
 	const handleAddToCart = () => {
-		addToCart({ ...product, quantity });
-		setQuantity(0);
+		addToCart({ ...product, quantity: localQuantity });
+		setLocalQuantity(0);
 	};
-
-	// const handleDeleteFromCart = () => {
-	// 	updateQuantity(product.id, 0);
-	// 	setQuantity(0);
-	// };
 
 	return (
 		<Row className='cardContainer'>
@@ -35,22 +25,7 @@ const ProductWidget = ({ product }) => {
 						Precio: ${product.price.toLocaleString()}
 					</Typography.Paragraph>
 				</Col>
-				<ButtonBox quantity={quantity} setQuantity={setQuantity} product={product} />
-				{/* <Col>
-					{quantity === 0 ?
-						<Button onClick={() => handleDeleteFromCart()} icon={<DeleteOutlined />} disabled />
-						: quantity === 1 ?
-							(<Button onClick={() => handleDeleteFromCart()} icon={<DeleteOutlined />} />)
-							: (<Button onClick={() => handleQuantityChange(quantity - 1)} icon={<MinusOutlined />} />)}
-					<InputNumber
-						min={0}
-						value={quantity}
-						onChange={handleQuantityChange}
-						controls={false}
-						style={{ margin: '0 8px' }}
-					/>
-					<Button onClick={() => handleQuantityChange(quantity + 1)} icon={<PlusOutlined />} />
-				</Col> */}
+				<ButtonBox quantity={localQuantity} setQuantity={setLocalQuantity} product={product} />
 				<Col className='addToCardButton'>
 					<Button type="primary" onClick={handleAddToCart} style={{ marginTop: '8px' }}>
 						Add to Cart
@@ -58,7 +33,6 @@ const ProductWidget = ({ product }) => {
 				</Col>
 			</Card>
 		</Row>
-
 	);
 };
 
