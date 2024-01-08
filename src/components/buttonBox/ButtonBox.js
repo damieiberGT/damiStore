@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Row, Button, InputNumber, Typography } from 'antd';
+import { Row, Button, InputNumber, Typography, Col, Popover } from 'antd';
 import { PlusOutlined, MinusOutlined, DeleteOutlined } from '@ant-design/icons';
 import { useCart } from '../../contexts/CartContext';
+import './ButtonBox.scss'
 
 const ButtonBox = ({ quantity, setQuantity, product }) => {
 	const { updateQuantity, productList } = useCart();
@@ -36,24 +37,28 @@ const ButtonBox = ({ quantity, setQuantity, product }) => {
 
 	return (
 		<Row className='buttonBoxRow'>
-			{renderButton()}
-			<InputNumber
-				min={0}
-				value={quantity}
-				onChange={handleQuantityChange}
-				controls={false}
-				style={{ margin: '0 8px', maxWidth: '25%' }}
-			/>
-			<Button
-				onClick={() => handleQuantityChange(quantity + 1)}
-				icon={<PlusOutlined />}
-				disabled={isMaxQuantity}
-			/>
-			{isMaxQuantity && (
-				<Typography.Text type="danger" style={{ marginLeft: '8px' }}>
-					La cantidad seleccionada es la cantidad total de productos disponibles.
-				</Typography.Text>
-			)}
+			<Col span={24} className='buttonBoxCol'>
+				{renderButton()}
+				<InputNumber
+					min={0}
+					value={quantity}
+					onChange={handleQuantityChange}
+					controls={false}
+					style={{ margin: '0 8px', maxWidth: '25%' }}
+				/>
+				<Button
+					onClick={() => handleQuantityChange(quantity + 1)}
+					icon={<PlusOutlined />}
+					disabled={isMaxQuantity}
+				/>
+			</Col>
+			<Col span={24} className='buttonBoxCol'>
+				{isMaxQuantity && (
+					<Typography.Text type="danger" style={{ marginLeft: '8px' }}>
+						No hay más productos disponibles
+					</Typography.Text>
+				)}
+			</Col>
 		</Row>
 	);
 };

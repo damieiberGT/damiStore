@@ -23,12 +23,12 @@ const ProductWidget = ({ product }) => {
 	};
 
 	return (
-		<Row className='cardContainer'>
+		<div className='cardContainer'>
 			<Card className='card'>
 				<Typography.Title level={3} className='cardTitle'>
 					{product.name}
 				</Typography.Title>
-				<Col>
+				<Col className='cardPrice'>
 					<Typography.Paragraph>
 						Precio: ${product?.price?.toLocaleString()}
 					</Typography.Paragraph>
@@ -40,7 +40,7 @@ const ProductWidget = ({ product }) => {
 					<BasicButton onClick={handleAddToCart} label="Add to Cart" disabled={isInvalidQuantity} />
 				</Col>
 			</Card>
-		</Row>
+		</div>
 	);
 };
 

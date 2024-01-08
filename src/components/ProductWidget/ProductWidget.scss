@@ -5,7 +5,10 @@
 }
 
 .card .ant-card-body {
+	display: flex;
 	padding: 8px;
+	max-width: min-content;
+	flex-direction: column;
 }
 
 .cardTitle {
@@ -20,6 +23,11 @@
 }
 
 .cardButtons {
+	display: flex;
+	justify-content: center;
+}
+
+.cardPrice {
 	display: flex;
 	justify-content: center;
 }
