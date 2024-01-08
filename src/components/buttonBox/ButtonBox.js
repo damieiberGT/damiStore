@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Row, Button, InputNumber, Typography, Col, Popover } from 'antd';
 import { PlusOutlined, MinusOutlined, DeleteOutlined } from '@ant-design/icons';
 import { useCart } from '../../contexts/CartContext';
-import './ButtonBox.scss'
+import './ButtonBox.scss';
 
 const ButtonBox = ({ quantity, setQuantity, product }) => {
 	const { updateQuantity, productList } = useCart();
@@ -24,20 +24,42 @@ const ButtonBox = ({ quantity, setQuantity, product }) => {
 		setIsMaxQuantity(quantity >= maxQuantity);
 	}, [quantity, product, productList]);
 
+	const content = (
+		<Typography.Text type="danger">
+			No hay más productos disponibles
+		</Typography.Text>
+	);
+
 	const renderButton = () => {
 		switch (quantity) {
 			case 0:
-				return <Button onClick={handleDeleteFromCart} icon={<DeleteOutlined />} disabled />;
+				return (
+					<Button
+						onClick={handleDeleteFromCart}
+						icon={<DeleteOutlined />}
+						disabled
+					/>
+				);
 			case 1:
-				return <Button onClick={handleDeleteFromCart} icon={<DeleteOutlined />} />;
+				return (
+					<Button
+						onClick={handleDeleteFromCart}
+						icon={<DeleteOutlined />}
+					/>
+				);
 			default:
-				return <Button onClick={() => handleQuantityChange(quantity - 1)} icon={<MinusOutlined />} />;
+				return (
+					<Button
+						onClick={() => handleQuantityChange(quantity - 1)}
+						icon={<MinusOutlined />}
+					/>
+				);
 		}
 	};
 
 	return (
-		<Row className='buttonBoxRow'>
-			<Col span={24} className='buttonBoxCol'>
+		<Row className="buttonBoxRow">
+			<Col span={24} className="buttonBoxCol">
 				{renderButton()}
 				<InputNumber
 					min={0}
@@ -46,18 +68,17 @@ const ButtonBox = ({ quantity, setQuantity, product }) => {
 					controls={false}
 					style={{ margin: '0 8px', maxWidth: '25%' }}
 				/>
-				<Button
-					onClick={() => handleQuantityChange(quantity + 1)}
-					icon={<PlusOutlined />}
-					disabled={isMaxQuantity}
-				/>
-			</Col>
-			<Col span={24} className='buttonBoxCol'>
-				{isMaxQuantity && (
-					<Typography.Text type="danger" style={{ marginLeft: '8px' }}>
-						No hay más productos disponibles
-					</Typography.Text>
-				)}
+				<Popover
+					content={isMaxQuantity ? content : null}
+					trigger="hover"
+				>
+					<Button
+						onClick={() => handleQuantityChange(quantity + 1)}
+						icon={<PlusOutlined />}
+						disabled={isMaxQuantity}
+						style={{ backgroundColor: isMaxQuantity ? '#ff4d4f' : '' }}
+					/>
+				</Popover>
 			</Col>
 		</Row>
 	);
