@@ -1,19 +1,33 @@
-// src/components/Home/Home.scss
-
-.home-container {
-	border: 1px solid #ddd;
-	padding: 1rem;
-	margin: 1rem;
-}
-
 .light-mode .home-container {
 	background-color: var(--background-light);
 	color: var(--text-light);
 }
 
-.dark-mode .home-container {
+.dark-mode {
 	background-color: var(--background-dark);
 	color: var(--text-dark);
+
+	.presentation {
+		color: white;
+	}
+
+	.title {
+		color: white;
+	}
 }
 
-/* Agrega estilos adicionales según sea necesario */
+.titleContainer {
+	display: flex;
+	justify-content: center;
+}
+
+.box {
+	display: flex;
+	justify-content: center;
+	margin: 8px 0;
+}
+
+.home {
+	display: flex;
+	flex-direction: column;
+}

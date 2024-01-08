@@ -6,14 +6,11 @@ $primary-color: #007bff;
 	margin-bottom: 1rem;
 }
 
-.light-mode .product {
-	background-color: var(--background-light);
-	color: var(--text-light);
-}
-
-.dark-mode .product {
-	background-color: var(--background-dark);
-	color: var(--text-dark);
+.dark-mode {
+	.productListTitle {
+		background-color: var(--background-dark);
+		color: white;
+	}
 }
 
 .productList {

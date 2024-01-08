@@ -1,10 +1,12 @@
 // src/components/Navbar/Navbar.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Layout, Menu, Switch as AntSwitch } from 'antd';
+import { Layout, Menu, Switch, Space } from 'antd';
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import './Navbar.scss';
 import { useCart } from '../../contexts/CartContext';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
 
 const { Header } = Layout;
 
@@ -28,10 +30,6 @@ const Navbar = () => {
 					</Menu>
 				</div>
 				<div className="switch-cart-container">
-					<AntSwitch
-						checked={darkMode}
-						onChange={handleDarkModeChange}
-					/>
 					<div className="cart-icon">
 						<Link to="/carrito">
 							<ShoppingCartOutlined style={{ fontSize: '24px', marginLeft: '8px' }} />
@@ -39,6 +37,14 @@ const Navbar = () => {
 						</Link>
 					</div>
 				</div>
+				<Space direction="vertical">
+					<Switch
+						checked={darkMode}
+						onChange={handleDarkModeChange}
+						checkedChildren={<DarkModeIcon sx={{ margin: "5px 0", padding: 0, fontSize: 12 }} />}
+						unCheckedChildren={<LightModeIcon sx={{ marginTop: "-26px", padding: 0, fontSize: 12 }} />}
+					/>
+				</Space>
 			</div>
 		</Header>
 	);
