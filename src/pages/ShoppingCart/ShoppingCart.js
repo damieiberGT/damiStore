@@ -1,7 +1,10 @@
 // src/components/ShoppingCart/ShoppingCart.js
 import React from 'react';
 import { useCart } from '../../contexts/CartContext';
+import { Layout, Menu, Switch, Space, Row, Col } from 'antd';
+import ProductInCart from '../../components/productInCart/ProductInCart';
 import ButtonBox from '../../components/buttonBox/ButtonBox';
+import BasicButton from '../../components/basicButton/BasicButton';
 import './ShoppingCart.scss';
 
 const ShoppingCart = () => {
@@ -16,18 +19,33 @@ const ShoppingCart = () => {
 	};
 
 	return (
-		<div className={`shopping-cart ${darkMode ? 'dark-mode' : ''}`}>
-			<h2>Carrito de Compras</h2>
-			{cartItems.map((item) => (
-				<div key={item.id} className="cart-item">
-					<p>{item.name} - ${item.price}</p>
-					<ButtonBox quantity={item.quantity} setQuantity={(newQuantity) => handleQuantityChange(item.id, newQuantity)} product={item} />
-				</div>
-			))}
-			<p>Total: ${calculateTotal()}</p>
-			<button onClick={handleClearCart}>Limpiar Carrito</button>
-			<button onClick={handleCheckout}>Comprar</button>
-		</div>
+		<>
+			<Row className={`${darkMode ? 'dark-mode' : ''}`}>
+				<Col span={24}>
+					<h2>Carrito de Compras</h2>
+				</Col>
+			</Row>
+			<Row className={`shoppingCartContainer ${darkMode ? 'dark-mode' : ''}`}>
+				<Col span={16}>
+					{cartItems.map((item) => (
+						<Col span={24} key={item.id} >
+							<ProductInCart item={item} handleQuantityChange={handleQuantityChange} />
+						</Col>
+					))}
+				</Col>
+				<Col span={8} className='subtotal'>
+					<Col span={24}>
+						<p className='total'>
+							Total: ${calculateTotal()}
+						</p>
+					</Col>
+					<Col span={24} className='buttonRow'>
+						<BasicButton onClick={handleClearCart} label="Limpiar Carrito" />
+						<BasicButton onClick={handleCheckout} label="Comprar" />
+					</Col>
+				</Col>
+			</Row>
+		</>
 	);
 };
 

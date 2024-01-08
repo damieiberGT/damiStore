@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Card, InputNumber, Button, Row, Typography, Col } from 'antd';
 import { PlusOutlined, DeleteOutlined } from '@ant-design/icons';
 import ButtonBox from '../buttonBox/ButtonBox';
+import BasicButton from '../basicButton/BasicButton'
 import { useCart } from '../../contexts/CartContext';
 import './ProductWidget.scss';
 
@@ -22,14 +23,14 @@ const ProductWidget = ({ product }) => {
 				</Typography.Title>
 				<Col>
 					<Typography.Paragraph>
-						Precio: ${product.price.toLocaleString()}
+						Precio: ${product?.price?.toLocaleString()}
 					</Typography.Paragraph>
 				</Col>
-				<ButtonBox quantity={localQuantity} setQuantity={setLocalQuantity} product={product} />
+				<Col className='cardButtons'>
+					<ButtonBox quantity={localQuantity} setQuantity={setLocalQuantity} product={product} />
+				</Col>
 				<Col className='addToCardButton'>
-					<Button type="primary" onClick={handleAddToCart} style={{ marginTop: '8px' }}>
-						Add to Cart
-					</Button>
+					<BasicButton onClick={handleAddToCart} label="Add to Cart" />
 				</Col>
 			</Card>
 		</Row>

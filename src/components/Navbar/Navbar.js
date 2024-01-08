@@ -26,6 +26,7 @@ const Navbar = () => {
 				<Menu theme={darkMode ? 'dark' : 'light'} mode="horizontal" defaultSelectedKeys={['1']}>
 					<Menu.Item key="1"><Link to="/">Home</Link></Menu.Item>
 					<Menu.Item key="2"><Link to="/productos">Productos</Link></Menu.Item>
+					<Menu.Item key="3"><Link to="/add">Agregar Productos</Link></Menu.Item>
 				</Menu>
 				<div className="switch-cart-container">
 					<div className="cart-icon">
@@ -45,7 +46,6 @@ const Navbar = () => {
 				</Space>
 			</Col >
 		</Row>
-		// </Header>
 	);
 };
 

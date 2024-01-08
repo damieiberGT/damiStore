@@ -16,4 +16,26 @@
 	color: var(--text-dark);
 }
 
-/* Agrega estilos adicionales según sea necesario */
+.buttonRow {
+	display: flex;
+	justify-content: space-around;
+}
+.cardContainer {
+	display: flex;
+	justify-content: center;
+}
+
+.shoppingCartContainer {
+	padding: 0 24px;
+}
+
+.subtotal {
+	border: 2px solid black;
+	border-radius: 5%;
+	padding: 0 2%;
+}
+
+.total {
+	font-size: 24px;
+	margin: 8px 0;
+}
