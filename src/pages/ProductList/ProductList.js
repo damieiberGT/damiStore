@@ -9,10 +9,15 @@ const ProductList = () => {
 	const { addToCart, darkMode } = useCart();
 	const [productList, setProductList] = useState(products);
 
+	// useEffect(() => {
+	// 	const storedProductList = JSON.parse(localStorage.getItem('productList'));
+	// 	setProductList(storedProductList || []);
+	// }, [productList]);
+
 	useEffect(() => {
 		const storedProductList = JSON.parse(localStorage.getItem('productList'));
 		setProductList(storedProductList || []);
-	}, [productList]);
+	}, []);
 
 
 	return (

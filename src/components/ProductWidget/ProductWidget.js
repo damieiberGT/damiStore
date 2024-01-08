@@ -1,18 +1,25 @@
 import React, { useState } from 'react';
-import { Card, InputNumber, Button, Row, Typography, Col } from 'antd';
-import { PlusOutlined, DeleteOutlined } from '@ant-design/icons';
+import { Card, Row, Typography, Col } from 'antd';
 import ButtonBox from '../buttonBox/ButtonBox';
-import BasicButton from '../basicButton/BasicButton'
+import BasicButton from '../basicButton/BasicButton';
 import { useCart } from '../../contexts/CartContext';
 import './ProductWidget.scss';
 
 const ProductWidget = ({ product }) => {
-	const { addToCart } = useCart();
+	const { addToCart, productList } = useCart();
 	const [localQuantity, setLocalQuantity] = useState(0);
 
+	const storedProduct = productList.find((p) => p.id === product.id);
+	const isInvalidQuantity =
+		!storedProduct || localQuantity <= 0 || Math.floor(localQuantity) > storedProduct.amount;
+
 	const handleAddToCart = () => {
-		addToCart({ ...product, quantity: localQuantity });
-		setLocalQuantity(0);
+		if (!isInvalidQuantity) {
+			addToCart({ ...product, quantity: Math.floor(localQuantity) });
+			setLocalQuantity(0);
+		} else {
+			console.log('La cantidad seleccionada es inválida');
+		}
 	};
 
 	return (
@@ -30,7 +37,7 @@ const ProductWidget = ({ product }) => {
 					<ButtonBox quantity={localQuantity} setQuantity={setLocalQuantity} product={product} />
 				</Col>
 				<Col className='addToCardButton'>
-					<BasicButton onClick={handleAddToCart} label="Add to Cart" />
+					<BasicButton onClick={handleAddToCart} label="Add to Cart" disabled={isInvalidQuantity} />
 				</Col>
 			</Card>
 		</Row>
@@ -38,3 +45,5 @@ const ProductWidget = ({ product }) => {
 };
 
 export default ProductWidget;
+
+
