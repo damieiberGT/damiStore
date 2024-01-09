@@ -6,8 +6,6 @@ import { ShoppingCartOutlined } from '@ant-design/icons';
 import './Navbar.scss';
 import { useCart } from '../../contexts/CartContext';
 
-// const { Header } = Layout;
-
 const Navbar = () => {
 	const { darkMode, setDarkMode, cartItems } = useCart();
 

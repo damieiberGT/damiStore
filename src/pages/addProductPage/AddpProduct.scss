@@ -1,11 +1,17 @@
 @import "../../styles/variables";
 
-.restButton {
+.addProductContainer {
+	display: flex;
+	justify-content: center;
 	background-color: $primary-color;
-	color: black;
+	color: $primary-font-color;
 }
 
 .dark-mode {
-	background-color: #000;
-	color: #fff;
+	background-color: $dark-mode-background-color;
+	color: $dark-mode-font-color;
+
+	.addProductTitle {
+		color: $dark-mode-font-color;
+	}
 }

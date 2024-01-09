@@ -1,3 +1,5 @@
+@import "../../styles/variables";
+
 .buttonBoxCol {
 	display: flex;
 	justify-content: center;
@@ -11,16 +13,16 @@
 
 .dark-mode {
 	.buttonBoxCol {
-		color: #fff; // Camb
+		color: $dark-mode-font-color;
 	}
 	.inputNumber .ant-input-number-input {
-		color: #fff;
+		color: $dark-mode-font-color;
 	}
 	.addButton {
-		background-color: #ffffff3f;
+		background-color: $dark-mode-background-color;
 	}
 
 	.restButton {
-		background-color: #ffffff3f;
+		background-color: $dark-mode-background-color;
 	}
 }

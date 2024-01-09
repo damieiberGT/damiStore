@@ -9,19 +9,15 @@ export const CartProvider = ({ children }) => {
 	const [quantity, setQuantity] = useState(0);
 	const [productList, setProductList] = useState([]);
 
-
 	useEffect(() => {
-		const storedCart = JSON.parse(localStorage.getItem('cartItems'));
-		if (storedCart) {
-			setCartItems(storedCart);
-		}
-
-		const storedProductList = JSON.parse(localStorage.getItem('productList'));
-
-		if (storedProductList) {
-			setProductList(storedProductList);
-		}
-
+		fetch(`${process.env.REACT_APP_API_URL}/products`)
+			.then((response) => response.json())
+			.then((data) => {
+				setProductList(data)
+			})
+			.catch((error) => {
+				console.error('Error al obtener datos desde la API', error);
+			});
 	}, []);
 
 	const addToCart = (product) => {
@@ -63,44 +59,22 @@ export const CartProvider = ({ children }) => {
 		localStorage.removeItem('cartItems');
 	};
 
-	// const handleCheckout = () => {
-	// 	const updatedCartItems = cartItems.map(item => {
-	// 		const remainingQuantity = item.amount - item.quantity;
-	// 		return { ...item, quantity: remainingQuantity, amount: remainingQuantity };
-	// 	});
-	// 	setCartItems(updatedCartItems);
-
-	// 	console.log('updatedCartItems', updatedCartItems);
-	// 	console.log('cartItems', cartItems);
-
-	// 	localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
-
-	// 	clearCart();
-	// };
-
 	const handleCheckout = () => {
 		const updatedProductList = productList.map(product => {
 			const cartItem = cartItems.find(item => item.id === product.id);
 
 			if (cartItem) {
-				// Restar la cantidad comprada del total disponible
 				const remainingQuantity = product.amount - cartItem.quantity;
 
-				// Actualizar solo la cantidad del producto en la lista sin reemplazar el producto completo
 				return { ...product, amount: remainingQuantity };
 			}
 
-			// Si el producto no está en el carrito, devolver el producto sin cambios
 			return product;
 		});
 
-		// Actualizar el estado de productList
 		setProductList(updatedProductList);
 
-		// Actualizar el localStorage después de realizar las operaciones necesarias
 		localStorage.setItem('productList', JSON.stringify(updatedProductList));
-
-		// Limpiar el carrito después de la compra
 		clearCart();
 	};
 
@@ -109,9 +83,26 @@ export const CartProvider = ({ children }) => {
 		setCartTotal(totalItems);
 	}, [cartItems]);
 
+	const CreateProduct = (postData) => {
+		fetch(`${process.env.REACT_APP_API_URL}/products`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(postData),
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				console.log('Respuesta del servidor:', data);
+			})
+			.catch((error) => {
+				console.error('Error al realizar la solicitud POST:', error);
+			});
+	}
+
 	return (
 		<CartContext.Provider
-			value={{ cartItems, addToCart, updateQuantity, calculateTotal, clearCart, darkMode, setDarkMode, cartTotal, quantity, setQuantity, handleCheckout, productList, setProductList }}
+			value={{ cartItems, addToCart, updateQuantity, calculateTotal, clearCart, darkMode, setDarkMode, cartTotal, quantity, setQuantity, handleCheckout, productList, setProductList, CreateProduct }}
 		>
 			{children}
 		</CartContext.Provider>

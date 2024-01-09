@@ -1,0 +1,19 @@
+@import "../../styles/variables";
+
+.dark-mode {
+	background-color: $dark-mode-background-color;
+	color: $dark-mode-font-color;
+
+	.formItem .ant-form-item-label {
+		color: $dark-mode-font-color;
+	}
+
+	.ant-input-number-input {
+		background-color: $dark-mode-background-color;
+		color: $dark-mode-font-color;
+	}
+	.ant-input {
+		background-color: $dark-mode-background-color;
+		color: $dark-mode-font-color;
+	}
+}
