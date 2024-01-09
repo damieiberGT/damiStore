@@ -1,0 +1,14 @@
+@import "../../styles/variables";
+
+.dark-mode {
+	&.footer {
+		background-color: $dark-mode-background-color;
+		color: $header-footer-font-color;
+	}
+}
+
+.footer {
+	background-color: $secondary-color;
+	text-align: center;
+	color: $header-footer-font-color;
+}

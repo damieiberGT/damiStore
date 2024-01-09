@@ -1,4 +1,4 @@
-// src/components/ShoppingCart/ShoppingCart.scss
+@import "../../styles/variables";
 
 .cart-item {
 	border: 1px solid #ddd;
@@ -6,14 +6,22 @@
 	margin-bottom: 1rem;
 }
 
-.light-mode .cart-item {
-	background-color: var(--background-light);
-	color: var(--text-light);
+.cart-item {
+	background-color: $primary-color;
+	color: $primary-font-color;
 }
 
-.dark-mode .cart-item {
-	background-color: var(--background-dark);
-	color: var(--text-dark);
+.dark-mode {
+	background-color: $dark-mode-background-color;
+	color: $dark-mode-font-color;
+
+	.shoppingCartTitle {
+		color: $dark-mode-font-color;
+	}
+
+	.total {
+		color: $dark-mode-font-color;
+	}
 }
 
 .buttonRow {
@@ -29,6 +37,12 @@
 	padding: 0 24px;
 }
 
+.shoppingCartTitleContainer {
+	display: flex;
+	justify-content: center;
+	background-color: $primary-color;
+}
+
 .subtotal {
 	border: 2px solid black;
 	border-radius: 5%;
@@ -36,6 +50,7 @@
 }
 
 .total {
+	color: $primary-font-color;
 	font-size: 24px;
 	margin: 8px 0;
 }

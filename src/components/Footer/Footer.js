@@ -1,11 +1,14 @@
 // src/components/Footer.js
 import React from 'react';
+import { useCart } from '../../contexts/CartContext';
+import './Footer.scss'
 
 const Footer = () => {
+	const { darkMode } = useCart();
 	return (
-		<footer>
-			<p>Información básica del Footer</p>
-		</footer>
+		<div className={`footer ${darkMode ? 'dark-mode' : ''}`}>
+			<p >© damiStore</p>
+		</div>
 	);
 };
 

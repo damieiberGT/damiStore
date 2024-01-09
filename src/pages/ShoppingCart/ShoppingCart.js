@@ -1,7 +1,7 @@
 // src/components/ShoppingCart/ShoppingCart.js
 import React from 'react';
 import { useCart } from '../../contexts/CartContext';
-import { Layout, Menu, Switch, Space, Row, Col } from 'antd';
+import { Layout, Menu, Switch, Typography, Row, Col } from 'antd';
 import ProductInCart from '../../components/productInCart/ProductInCart';
 import ButtonBox from '../../components/buttonBox/ButtonBox';
 import BasicButton from '../../components/basicButton/BasicButton';
@@ -21,8 +21,10 @@ const ShoppingCart = () => {
 	return (
 		<>
 			<Row className={`${darkMode ? 'dark-mode' : ''}`}>
-				<Col span={24}>
-					<h2>Carrito de Compras</h2>
+				<Col span={24} className={`shoppingCartTitleContainer ${darkMode ? 'dark-mode' : ''}`}>
+					<Typography.Title level={2} className={`shoppingCartTitle ${darkMode ? 'dark-mode' : ''}`}>
+						Carrito de Compras
+					</Typography.Title>
 				</Col>
 			</Row>
 			<Row className={`shoppingCartContainer ${darkMode ? 'dark-mode' : ''}`}>

@@ -1,18 +1,29 @@
-.light-mode .home-container {
-	background-color: var(--background-light);
-	color: var(--text-light);
+@import "../../styles/variables";
+
+.home {
+	background-color: $primary-color;
+	color: $primary-font-color;
+	padding: 24px;
+}
+
+.presentation {
+	color: $primary-font-color;
+}
+
+.title {
+	color: $primary-font-color;
 }
 
 .dark-mode {
-	background-color: var(--background-dark);
+	background-color: $dark-mode-background-color;
 	color: var(--text-dark);
 
 	.presentation {
-		color: white;
+		color: $dark-mode-font-color;
 	}
 
 	.title {
-		color: white;
+		color: $dark-mode-font-color;
 	}
 }
 

@@ -1,27 +1,22 @@
-/* src/components/Navbar/Navbar.scss */
-.dark-mode {
-	background-color: #001529;
-	color: #fff;
-}
+@import "../../styles/variables";
 
-.light-mode {
-	background-color: #fff;
-	color: #000;
+.dark-mode {
+	background-color: $dark-mode-background-color;
+	color: $dark-mode-font-color;
 }
 
 .logo {
 	flex: 1;
 	font-size: 1.5rem;
-	border: solid 2px green;
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
 }
 
 .menu {
 	display: flex;
 	align-items: center;
-	border: solid 2px red;
+	justify-content: flex-end;
 }
 
 .cart-icon {
@@ -30,24 +25,20 @@
 }
 
 .cart-badge {
-	background-color: red;
-	color: white;
 	border-radius: 50%;
 	padding: 4px 8px;
 }
 
 .cart-empty {
 	display: none;
-	// background-color: red;
-	// color: white;
-	// border-radius: 50%;
-	// padding: 4px 8px;
 }
 
 .navbar-container {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	background-color: $secondary-color;
+	padding: 0 32px;
 }
 
 .switch-cart-container {

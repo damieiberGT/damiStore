@@ -1,5 +1,54 @@
+@import "./variables";
+
 body {
 	font-family: "Arial", sans-serif;
 	background-color: $primary-color;
 	color: white;
+}
+
+h1 {
+	color: $primary-font-color;
+}
+
+html {
+	box-sizing: border-box;
+	touch-action: manipulation;
+
+	* {
+		box-sizing: border-box;
+	}
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+ul,
+li,
+h1,
+h2,
+h3,
+p,
+button {
+	margin: 0;
+	padding: 0;
+}
+
+ul {
+	list-style: none;
+}
+
+body {
+	height: 100vh;
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+	overflow: hidden;
+	overflow-y: auto;
+}
+
+#app {
+	height: 100%;
 }

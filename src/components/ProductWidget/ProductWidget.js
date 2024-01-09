@@ -24,7 +24,7 @@ const ProductWidget = ({ product }) => {
 
 	return (
 		<div className={`cardContainer ${darkMode ? 'dark-mode' : ''}`}>
-			<Card className={`card ${darkMode ? 'dark-mode' : ''}`}>
+			<Card hoverable className={`card ${darkMode ? 'dark-mode' : ''}`}>
 				<Typography.Title level={3} className='cardTitle'>
 					{product.name}
 				</Typography.Title>

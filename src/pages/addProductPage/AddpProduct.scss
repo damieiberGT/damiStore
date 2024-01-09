@@ -1,0 +1,11 @@
+@import "../../styles/variables";
+
+.restButton {
+	background-color: $primary-color;
+	color: black;
+}
+
+.dark-mode {
+	background-color: #000;
+	color: #fff;
+}

@@ -11,10 +11,6 @@
 	padding: 8px;
 	max-width: min-content;
 	flex-direction: column;
-
-	&.dark-mode {
-		background-color: #001529; // Dark mode background color
-	}
 }
 
 .cardTitle {
@@ -37,7 +33,6 @@
 	}
 
 	.card .ant-card-body {
-		background-color: #001529; // Dark mode background color
 		color: #fff; // Dark mode text color
 	}
 
