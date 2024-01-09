@@ -10,8 +10,7 @@ export const CartProvider = ({ children }) => {
 	const [productList, setProductList] = useState([]);
 
 	useEffect(() => {
-		// fetch(`${process.env.REACT_APP_API_URL}/products`)
-		fetch(`https://659cbd27633f9aee7907e263.mockapi.io/damiStore/products`)
+		fetch(`${process.env.REACT_APP_API_URL}/products`)
 			.then((response) => response.json())
 			.then((data) => {
 				setProductList(data)
@@ -85,8 +84,7 @@ export const CartProvider = ({ children }) => {
 	}, [cartItems]);
 
 	const CreateProduct = (postData) => {
-		fetch(`https://659cbd27633f9aee7907e263.mockapi.io/damiStore/products`, {
-			// fetch(`${process.env.REACT_APP_API_URL}/products`, {
+		fetch(`${process.env.REACT_APP_API_URL}/products`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
