@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
+import { notification } from 'antd';
 
 const CartContext = createContext();
 
@@ -18,6 +19,9 @@ export const CartProvider = ({ children }) => {
 			.catch((error) => {
 				console.error('Error al obtener datos desde la API', error);
 			});
+
+		const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+		setCartItems(cart)
 	}, []);
 
 	const addToCart = (product) => {
@@ -38,6 +42,7 @@ export const CartProvider = ({ children }) => {
 			return prevCart;
 		});
 	};
+
 	const updateQuantity = (productId, quantity) => {
 		setCartItems((prevCart) =>
 			prevCart.map((item) => (item.id === productId ? { ...item, quantity } : item))
@@ -74,6 +79,8 @@ export const CartProvider = ({ children }) => {
 
 		setProductList(updatedProductList);
 
+		notification.success({ message: "Gracias por comprar con nosotros" });
+
 		localStorage.setItem('productList', JSON.stringify(updatedProductList));
 		clearCart();
 	};
@@ -94,6 +101,7 @@ export const CartProvider = ({ children }) => {
 			.then((response) => response.json())
 			.then((data) => {
 				console.log('Respuesta del servidor:', data);
+				setProductList([...productList, data])
 			})
 			.catch((error) => {
 				console.error('Error al realizar la solicitud POST:', error);

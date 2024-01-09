@@ -1,16 +1,5 @@
 @import "../../styles/variables";
 
-.cart-item {
-	border: 1px solid #ddd;
-	padding: 1rem;
-	margin-bottom: 1rem;
-}
-
-.cart-item {
-	background-color: $primary-color;
-	color: $primary-font-color;
-}
-
 .dark-mode {
 	background-color: $dark-mode-background-color;
 	color: $dark-mode-font-color;
@@ -19,8 +8,16 @@
 		color: $dark-mode-font-color;
 	}
 
+	.shoppingCartTitleContainer {
+		background-color: $dark-mode-background-color;
+	}
+
 	.total {
 		color: $dark-mode-font-color;
+	}
+
+	.subtotal {
+		border: 2px solid $secondary-color;
 	}
 }
 
@@ -34,7 +31,11 @@
 }
 
 .shoppingCartContainer {
-	padding: 0 24px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding: 32px;
+	height: 100vh;
 }
 
 .shoppingCartTitleContainer {
@@ -44,13 +45,38 @@
 }
 
 .subtotal {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	border: 2px solid black;
 	border-radius: 5%;
-	padding: 0 2%;
+	padding: 2%;
+	height: fit-content;
 }
 
 .total {
 	color: $primary-font-color;
-	font-size: 24px;
+	font-size: 36px;
 	margin: 8px 0;
+}
+
+.cartItemColumn {
+	display: flex;
+	flex: 0 1 11%;
+	justify-content: center;
+}
+
+.cartItemContainer {
+	display: flex;
+	gap: 16px;
+	flex-direction: column;
+	padding: 0 32px;
+}
+
+.cartItem {
+	width: 100%;
+}
+
+.shoppingCartTitle {
+	margin-top: 15px;
 }

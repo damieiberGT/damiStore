@@ -28,9 +28,9 @@ const ShoppingCart = () => {
 				</Col>
 			</Row>
 			<Row className={`shoppingCartContainer ${darkMode ? 'dark-mode' : ''}`}>
-				<Col span={16}>
+				<Col span={16} className='cartItemContainer'>
 					{cartItems.map((item) => (
-						<Col span={24} key={item.id} >
+						<Col span={24} key={item.id} className='cartItemColumn' >
 							<ProductInCart item={item} handleQuantityChange={handleQuantityChange} />
 						</Col>
 					))}

@@ -3,6 +3,7 @@ import React from 'react';
 import { Row } from 'antd';
 import { useCart } from '../../contexts/CartContext';
 import ProductWidget from '../../components/ProductWidget/ProductWidget';
+import './ProductList.scss'
 
 const ProductList = () => {
 	const { addToCart, darkMode, productList } = useCart();

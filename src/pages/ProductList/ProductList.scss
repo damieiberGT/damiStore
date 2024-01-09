@@ -1,12 +1,5 @@
 @import "../../styles/variables";
 
-.product {
-	border: 1px solid #ddd;
-	padding: 1rem;
-	margin-bottom: 1rem;
-	background-color: $primary-color;
-}
-
 .dark-mode {
 	.productListTitle {
 		background-color: $primary-color;
@@ -17,15 +10,4 @@
 .productList {
 	display: flex;
 	justify-content: center;
-}
-
-.productListTitleContainer {
-	display: flex;
-	justify-content: center;
-	border: solid 4px $primary-color;
-	padding: 0;
-}
-
-.productListTitle {
-	margin: 0;
 }

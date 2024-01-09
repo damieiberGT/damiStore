@@ -23,7 +23,6 @@ function App() {
           <Content>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/productos" element={<ProductList />} />
               <Route path="/carrito" element={<ShoppingCart />} />
               <Route path="/add" element={<AddProductPage />} />
             </Routes>

@@ -1,9 +1,29 @@
+@import "../../styles/variables";
+
 .cartItem {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	padding: 4px;
-	border: 1px solid red;
-	background-color: green;
-	max-width: 75%;
+	padding: 16px;
+	border: 1px solid $primary-font-color;
+	background-color: $secondary-color;
+	width: 100%;
+	border-radius: 2%;
+}
+
+.dark-mode {
+	background-color: $primary-color;
+	color: $primary-font-color;
+
+	.cartItem {
+		border: 1px solid $secondary-color;
+	}
+	.cartItemName {
+		color: $dark-mode-font-color;
+	}
+}
+
+.cartItemName {
+	color: $primary-font-color;
+	font-size: 32px;
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, InputNumber, message } from 'antd';
+import { Form, Input, Button, InputNumber, notification } from 'antd';
 import { useCart } from '../../contexts/CartContext';
 import './AddProductForm.scss'
 
@@ -15,12 +15,17 @@ const AddProductForm = ({ onAddProduct }) => {
 
 		const { productName, productPrice, productAmount } = values;
 
+		console.log('productList', productList);
+		console.log('productName', productName);
+
 		const isDuplicate = productList.some(
 			(product) => product.name.trim().toLowerCase() === productName.trim().toLowerCase()
 		);
 
+		console.log('isDuplicate', isDuplicate);
+
 		if (isDuplicate) {
-			message.error('Ya existe un producto con este nombre');
+			notification.error({ message: 'Ya existe un producto con este nombre' });
 			return;
 		}
 
@@ -30,8 +35,9 @@ const AddProductForm = ({ onAddProduct }) => {
 			amount: parseInt(productAmount, 10)
 		};
 		CreateProduct(newProduct)
+		setProductList([...productList, newProduct])
 		form.resetFields();
-		message.success('Producto agregado exitosamente');
+		notification.success({ message: 'Producto agregado exitosamente' });
 	};
 
 	return (
